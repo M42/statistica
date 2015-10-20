@@ -1,0 +1,119 @@
+---
+title: "Esercizi 1"
+author: "Mario Román"
+date: "20/10/2015"
+output: pdf_document
+---
+
+# Vettori
+
+## Esercizio 1
+
+Generare un vettore contenente i primi 100 interi positivi: Calcolare la media, 
+la varianza e la deviazione standard dei suoi elementi (funzioni mean, var, sd).
+
+```{r}
+interi = c(1:100)
+mean(interi)
+sd(interi)
+var(interi)
+```
+
+## Esercizio 2
+
+Ripetere il precedente esercizio con un vettore di 100 numeri random estratti 
+da una distibuzione normale standard (si veda la funzione rnorm).
+
+```{r}
+numeri = rnorm(100)
+mean(numeri)
+sd(numeri)
+var(numeri)
+```
+
+## Esercizio 3
+
+(a) Costruire una sequenza `s` costituita da 3 ripetizioni in sequenza dellastringa “CGCT”.
+(b) Estrarre dalla sequenza ottenuta una sottosequenza `sub` in cui compaiano 
+tutti gli elementi di `s` eccetto la lettera C. 
+(c) Aggiungere in coda alla sequenza ottenuta 3 valori `NA`.
+(d) Riottenere la sequenza `sub` in (b) tramite la funzione `is.na()`
+
+```{r}
+s = c(rep(c("C","G","C","T"),times=3))
+sub = s[!s=="C"]
+sub = c(sub,NA,NA)
+sub[!is.na(sub)]
+```
+
+## Esercizio 4
+
+Cosa accade se si prova a costruire un vettore eterogeneo di numeri e 
+caratteri? E di numeri e di valori logici?
+
+```{r}
+# Costruisce un vettore eterogeneo
+c(1,2,3,5,'a','b')
+# Converte i valori logici in valori numerici
+c(1,5,3,4,TRUE,FALSE)
+```
+
+## Esercizio 5
+
+Generare un vettore `vet` di 100 elementi casuali estratti secondo la 
+distribuzione uniforme in [0,1]  (vedi `runif`). Estarre da `vett`
+un vettore `subvet` i cui elementi abbiano valore `v>0.2` e valore `v<0.6`. Estrarre da 
+subvet gli elementi di indice pari ed assegnarli al vettore `w`.
+Trasformare `w` in modo che i suoi elementi siano normalizzati rispetto al loro valore medio ed alla 
+deviazione standard.
+
+```{r}
+
+```
+
+# Matrici
+
+## Esercizio 1
+Costruire una matrice `10x10` composta da numeri casuali in almeno 2 
+modi diversi utilizzando le funzioni matrix ed array.
+
+```{r}
+matrix(rnorm(100),nrow=10)
+matrix(rpois(100,lambda=3),nrow=10) 
+```
+
+## Esercizio 2
+Costruire 2 matrici di caratteri a piacere `x` e `y`, la prima di dimensione 
+`3x4`, la seconda di dimensione `5x3`. Modificare con un unico assegnamento la matrice `x`
+in modo da sostituire le sue 2 prime colonne con le ultime 2 righe di `y`.
+
+```{r}
+install.packages("random")
+library(random)
+x = matrix(randomStrings(n=12,len=1), nrow=4)
+y = matrix(randomStrings(n=15,len=1), nrow=3)
+x
+y
+# Gira la matrice e modifica le colonne
+x[1:2,] = t(y[,4:5])
+x
+```
+
+## Esercizio 4
+Date due matrici quadrate A e B di dimensione `3x3` costituite da numeri 
+casuali, calcolarne il prodotto elemento per elemento e "righe per 
+colonne". Scelto un vettore b di 3 elementi, risolvere il sistema lineare 
+`Ax=b` che ne deriva.
+
+```{r}
+# Matrici casuali
+A = matrix(rnorm(9), nrow=3)
+B = matrix(rnorm(9), nrow=3)
+# Prodotto
+A * B
+A %*% B
+# Sistema lineare
+b = c(1,2,3)
+x = solve(A,b)
+A %*% x
+```
