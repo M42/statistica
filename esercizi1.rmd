@@ -117,3 +117,36 @@ b = c(1,2,3)
 x = solve(A,b)
 A %*% x
 ```
+
+# Fattori
+## Esercizio 2
+Costruisci un fattore ordinato di 15 elementi di livelli 
+`basso < medio < alto`. Genera un corrispondente vettore di misurazioni di 
+lunghezza 15 e calcola il valor medio e la deviazione 
+standard (funzione `sd`) di ogni livello tramite la funzione 
+tapply.
+
+```{r}
+livelli = c("basso","medio","alto")
+fattore = ordered(sample(livelli, 15, replace=TRUE), livelli)
+summary(fattore)
+```
+
+
+# Data frames
+## Esercizio 3
+Selezionare dal data set `iris` le osservazioni relative alle specie 
+“virginica” con `Petal.Length>5.890`.
+
+```{r}
+data(iris)
+iris[iris$Species=="virginica" & iris$Petal.Length>5.890,]
+```
+
+## Esercizio 4
+Tramite la funzione `summary` ricavare informazioni statistiche di base 
+sulla specie `versicolor` del data set iris.
+
+```{r}
+summary(iris[iris$Species=="versicolor",])
+```
