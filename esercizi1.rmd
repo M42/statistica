@@ -88,7 +88,7 @@ Costruire 2 matrici di caratteri a piacere `x` e `y`, la prima di dimensione
 in modo da sostituire le sue 2 prime colonne con le ultime 2 righe di `y`.
 
 ```{r}
-install.packages("random")
+install.packages("random", repos="http://cran.us.r-project.org")
 library(random)
 x = matrix(randomStrings(n=12,len=1), nrow=4)
 y = matrix(randomStrings(n=15,len=1), nrow=3)
